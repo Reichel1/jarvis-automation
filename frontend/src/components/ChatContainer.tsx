@@ -75,40 +75,38 @@ export const ChatContainer: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-full relative">
+    <div className="flex flex-col h-[90vh] w-full max-w-2xl mx-auto rounded-3xl shadow-glass glass-dark border border-white/10 overflow-hidden">
       {/* Header */}
-      <div className="bg-white/10 backdrop-blur-lg border-b border-white/20 p-6 relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-t-3xl"></div>
-        <div className="flex items-center justify-between relative z-10">
+      <div className="glass-dark border-b border-white/10 p-6 relative z-10">
+        <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
-            <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg transform hover:scale-105 transition-transform duration-300">
+            <div className="w-12 h-12 bg-gradient-to-r from-accent-blue to-accent rounded-2xl flex items-center justify-center shadow-lg">
               <span className="text-white font-bold text-lg">J</span>
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-white drop-shadow-lg">J.A.R.V.I.S</h1>
-              <p className="text-sm text-white/80 font-medium">Personal Automation Assistant</p>
+              <h1 className="text-2xl font-extrabold text-white drop-shadow-lg tracking-wide">J.A.R.V.I.S</h1>
+              <p className="text-sm text-white/70 font-medium">Personal Automation Assistant</p>
             </div>
           </div>
           <div className="flex items-center space-x-3">
-            <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50"></div>
-            <span className="text-xs text-white/90 font-medium bg-green-500/20 px-3 py-1 rounded-full backdrop-blur-sm">Live Preview</span>
+            <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse shadow-green-400/30"></div>
+            <span className="text-xs text-white/80 font-medium bg-green-500/10 px-3 py-1 rounded-full">Live Preview</span>
           </div>
         </div>
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-6 space-y-6 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/5 to-transparent"></div>
+      <div className="flex-1 overflow-y-auto p-8 space-y-6 glass-dark">
         {messages.map((message) => (
           <ChatMessage key={message.id} message={message} />
         ))}
         {isLoading && (
           <div className="flex justify-start animate-fadeIn">
-            <div className="bg-white/10 backdrop-blur-lg rounded-3xl px-6 py-4 shadow-xl border border-white/20">
+            <div className="glass-dark rounded-3xl px-6 py-4 shadow-glass border border-white/10">
               <div className="flex space-x-2">
-                <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce"></div>
-                <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                <div className="w-2 h-2 bg-pink-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                <div className="w-2 h-2 bg-accent-blue rounded-full animate-bounce"></div>
+                <div className="w-2 h-2 bg-accent rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                <div className="w-2 h-2 bg-accent-pink rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
               </div>
             </div>
           </div>
@@ -117,11 +115,8 @@ export const ChatContainer: React.FC = () => {
       </div>
 
       {/* Input */}
-      <div className="bg-white/10 backdrop-blur-lg border-t border-white/20 p-6 relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-b-3xl"></div>
-        <div className="relative z-10">
-          <ChatInput onSendMessage={handleSendMessage} disabled={isLoading} />
-        </div>
+      <div className="glass-dark border-t border-white/10 p-6">
+        <ChatInput onSendMessage={handleSendMessage} disabled={isLoading} />
       </div>
     </div>
   );

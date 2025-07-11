@@ -34,26 +34,25 @@ export const ActionCard: React.FC<ActionCardProps> = ({ action }) => {
   };
 
   return (
-    <div className={`p-4 rounded-2xl border backdrop-blur-lg shadow-lg transform hover:scale-[1.02] transition-all duration-300 ${getStatusColor()}`}>
+    <div className={`p-5 rounded-2xl border border-white/10 glass-dark shadow-glass transform hover:scale-[1.01] transition-all duration-300`}> 
       <div className="flex items-start space-x-4">
         <div className="flex-shrink-0 mt-1">
           {getStatusIcon()}
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center space-x-3">
-            <h4 className="text-sm font-semibold text-white">{action.title}</h4>
-            <span className="text-xs text-white/70 uppercase tracking-wider bg-white/10 px-2 py-1 rounded-full">
+            <h4 className="text-base font-semibold text-white">{action.title}</h4>
+            <span className="text-xs text-white/70 uppercase tracking-wider bg-accent/10 px-2 py-1 rounded-full">
               {action.type}
             </span>
           </div>
-          <p className="text-xs text-white/80 mt-2 leading-relaxed">{action.description}</p>
-          
+          <p className="text-sm text-white/80 mt-2 leading-relaxed">{action.description}</p>
           {action.progress !== undefined && action.status === 'running' && (
             <div className="mt-3">
               <div className="flex items-center space-x-3">
                 <div className="flex-1 bg-white/20 rounded-full h-2">
                   <div
-                    className="bg-gradient-to-r from-blue-400 to-purple-500 h-2 rounded-full transition-all duration-500 shadow-sm"
+                    className="bg-gradient-to-r from-accent-blue to-accent h-2 rounded-full transition-all duration-500 shadow-sm"
                     style={{ width: `${action.progress}%` }}
                   />
                 </div>
@@ -61,13 +60,11 @@ export const ActionCard: React.FC<ActionCardProps> = ({ action }) => {
               </div>
             </div>
           )}
-          
           {action.error && (
             <div className="mt-3 p-3 bg-red-500/20 border border-red-400/30 rounded-xl text-xs text-red-200 backdrop-blur-sm">
               {action.error}
             </div>
           )}
-          
           {action.result && action.status === 'completed' && (
             <div className="mt-3 p-3 bg-green-500/20 border border-green-400/30 rounded-xl text-xs text-green-200 backdrop-blur-sm">
               <pre className="whitespace-pre-wrap">
