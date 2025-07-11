@@ -20,19 +20,6 @@ export const ActionCard: React.FC<ActionCardProps> = ({ action }) => {
     }
   };
 
-  const getStatusColor = () => {
-    switch (action.status) {
-      case 'completed':
-        return 'border-green-400/30 bg-green-500/10';
-      case 'failed':
-        return 'border-red-400/30 bg-red-500/10';
-      case 'running':
-        return 'border-blue-400/30 bg-blue-500/10';
-      default:
-        return 'border-white/20 bg-white/5';
-    }
-  };
-
   return (
     <div className={`p-5 rounded-2xl border border-white/10 glass-dark shadow-glass transform hover:scale-[1.01] transition-all duration-300`}> 
       <div className="flex items-start space-x-4">
