@@ -75,38 +75,40 @@ export const ChatContainer: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full relative">
       {/* Header */}
-      <div className="bg-white border-b border-gray-200 p-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold">J</span>
+      <div className="bg-white/10 backdrop-blur-lg border-b border-white/20 p-6 relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-t-3xl"></div>
+        <div className="flex items-center justify-between relative z-10">
+          <div className="flex items-center space-x-4">
+            <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg transform hover:scale-105 transition-transform duration-300">
+              <span className="text-white font-bold text-lg">J</span>
             </div>
             <div>
-              <h1 className="text-xl font-semibold text-gray-900">J.A.R.V.I.S</h1>
-              <p className="text-sm text-gray-500">Personal Automation Assistant</p>
+              <h1 className="text-2xl font-bold text-white drop-shadow-lg">J.A.R.V.I.S</h1>
+              <p className="text-sm text-white/80 font-medium">Personal Automation Assistant</p>
             </div>
           </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-            <span className="text-xs text-green-600 font-medium">Live Preview</span>
+          <div className="flex items-center space-x-3">
+            <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50"></div>
+            <span className="text-xs text-white/90 font-medium bg-green-500/20 px-3 py-1 rounded-full backdrop-blur-sm">Live Preview</span>
           </div>
         </div>
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 overflow-y-auto p-6 space-y-6 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/5 to-transparent"></div>
         {messages.map((message) => (
           <ChatMessage key={message.id} message={message} />
         ))}
         {isLoading && (
-          <div className="flex justify-start">
-            <div className="bg-gray-100 rounded-2xl px-4 py-2">
+          <div className="flex justify-start animate-fadeIn">
+            <div className="bg-white/10 backdrop-blur-lg rounded-3xl px-6 py-4 shadow-xl border border-white/20">
               <div className="flex space-x-2">
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce"></div>
+                <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                <div className="w-2 h-2 bg-pink-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
               </div>
             </div>
           </div>
@@ -115,8 +117,11 @@ export const ChatContainer: React.FC = () => {
       </div>
 
       {/* Input */}
-      <div className="bg-white border-t border-gray-200 p-4">
-        <ChatInput onSendMessage={handleSendMessage} disabled={isLoading} />
+      <div className="bg-white/10 backdrop-blur-lg border-t border-white/20 p-6 relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-b-3xl"></div>
+        <div className="relative z-10">
+          <ChatInput onSendMessage={handleSendMessage} disabled={isLoading} />
+        </div>
       </div>
     </div>
   );

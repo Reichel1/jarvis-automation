@@ -23,53 +23,53 @@ export const ActionCard: React.FC<ActionCardProps> = ({ action }) => {
   const getStatusColor = () => {
     switch (action.status) {
       case 'completed':
-        return 'border-green-200 bg-green-50';
+        return 'border-green-400/30 bg-green-500/10';
       case 'failed':
-        return 'border-red-200 bg-red-50';
+        return 'border-red-400/30 bg-red-500/10';
       case 'running':
-        return 'border-blue-200 bg-blue-50';
+        return 'border-blue-400/30 bg-blue-500/10';
       default:
-        return 'border-gray-200 bg-gray-50';
+        return 'border-white/20 bg-white/5';
     }
   };
 
   return (
-    <div className={`p-3 rounded-lg border ${getStatusColor()}`}>
-      <div className="flex items-start space-x-3">
-        <div className="flex-shrink-0 mt-0.5">
+    <div className={`p-4 rounded-2xl border backdrop-blur-lg shadow-lg transform hover:scale-[1.02] transition-all duration-300 ${getStatusColor()}`}>
+      <div className="flex items-start space-x-4">
+        <div className="flex-shrink-0 mt-1">
           {getStatusIcon()}
         </div>
         <div className="flex-1 min-w-0">
-          <div className="flex items-center space-x-2">
-            <h4 className="text-sm font-medium text-gray-900">{action.title}</h4>
-            <span className="text-xs text-gray-500 uppercase tracking-wider">
+          <div className="flex items-center space-x-3">
+            <h4 className="text-sm font-semibold text-white">{action.title}</h4>
+            <span className="text-xs text-white/70 uppercase tracking-wider bg-white/10 px-2 py-1 rounded-full">
               {action.type}
             </span>
           </div>
-          <p className="text-xs text-gray-600 mt-1">{action.description}</p>
+          <p className="text-xs text-white/80 mt-2 leading-relaxed">{action.description}</p>
           
           {action.progress !== undefined && action.status === 'running' && (
-            <div className="mt-2">
-              <div className="flex items-center space-x-2">
-                <div className="flex-1 bg-gray-200 rounded-full h-2">
+            <div className="mt-3">
+              <div className="flex items-center space-x-3">
+                <div className="flex-1 bg-white/20 rounded-full h-2">
                   <div
-                    className="bg-blue-500 h-2 rounded-full transition-all duration-300"
+                    className="bg-gradient-to-r from-blue-400 to-purple-500 h-2 rounded-full transition-all duration-500 shadow-sm"
                     style={{ width: `${action.progress}%` }}
                   />
                 </div>
-                <span className="text-xs text-gray-500">{action.progress}%</span>
+                <span className="text-xs text-white/90 font-medium">{action.progress}%</span>
               </div>
             </div>
           )}
           
           {action.error && (
-            <div className="mt-2 p-2 bg-red-100 border border-red-200 rounded text-xs text-red-700">
+            <div className="mt-3 p-3 bg-red-500/20 border border-red-400/30 rounded-xl text-xs text-red-200 backdrop-blur-sm">
               {action.error}
             </div>
           )}
           
           {action.result && action.status === 'completed' && (
-            <div className="mt-2 p-2 bg-green-100 border border-green-200 rounded text-xs text-green-700">
+            <div className="mt-3 p-3 bg-green-500/20 border border-green-400/30 rounded-xl text-xs text-green-200 backdrop-blur-sm">
               <pre className="whitespace-pre-wrap">
                 {typeof action.result === 'string' ? action.result : JSON.stringify(action.result, null, 2)}
               </pre>
