@@ -1,145 +1,145 @@
-@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 240 15% 4%;
-    --foreground: 0 0% 95%;
-    --card: 240 15% 8%;
-    --card-foreground: 0 0% 95%;
-    --popover: 240 15% 8%;
-    --popover-foreground: 0 0% 95%;
-    --primary: 141 81% 40%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 240 15% 12%;
-    --secondary-foreground: 0 0% 95%;
-    --muted: 240 15% 12%;
-    --muted-foreground: 0 0% 60%;
-    --accent: 240 15% 16%;
-    --accent-foreground: 0 0% 95%;
-    --destructive: 0 62% 52%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 240 15% 20%;
-    --input: 240 15% 16%;
-    --ring: 141 81% 40%;
-    --radius: 1rem;
-  }
-
-  .dark {
-    --background: 240 15% 4%;
-    --foreground: 0 0% 95%;
-    --card: 240 15% 8%;
-    --card-foreground: 0 0% 95%;
-    --popover: 240 15% 8%;
-    --popover-foreground: 0 0% 95%;
-    --primary: 141 81% 40%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 240 15% 12%;
-    --secondary-foreground: 0 0% 95%;
-    --muted: 240 15% 12%;
-    --muted-foreground: 0 0% 60%;
-    --accent: 240 15% 16%;
-    --accent-foreground: 0 0% 95%;
-    --destructive: 0 62% 52%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 240 15% 20%;
-    --input: 240 15% 16%;
-    --ring: 141 81% 40%;
-  }
+:root {
+  --background: 10 10% 3%;
+  --foreground: 0 0% 98%;
+  --card: 10 10% 6%;
+  --card-foreground: 0 0% 98%;
+  --popover: 10 10% 6%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 142 71% 45%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 10 10% 10%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 10 10% 15%;
+  --muted-foreground: 0 0% 65%;
+  --accent: 10 10% 15%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62% 52%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 10 10% 20%;
+  --input: 10 10% 15%;
+  --ring: 142 71% 45%;
+  --radius: 0.75rem;
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
-    font-family: 'Urbanist', system-ui, sans-serif;
-    margin: 0;
-    min-height: 100vh;
-  }
+.dark {
+  --background: 10 10% 3%;
+  --foreground: 0 0% 98%;
+  --card: 10 10% 6%;
+  --card-foreground: 0 0% 98%;
+  --popover: 10 10% 6%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 142 71% 45%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 10 10% 10%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 10 10% 15%;
+  --muted-foreground: 0 0% 65%;
+  --accent: 10 10% 15%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62% 52%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 10 10% 20%;
+  --input: 10 10% 15%;
+  --ring: 142 71% 45%;
 }
 
-@layer components {
-  /* Glass Morphism Effects */
-  .glass-light {
-    @apply bg-white/5 backdrop-blur-md border border-white/10;
-  }
-  
-  .glass-medium {
-    @apply bg-white/10 backdrop-blur-glass border border-white/20;
-  }
-  
-  .glass-heavy {
-    @apply bg-white/15 backdrop-blur-glass-heavy border border-white/30;
-  }
-  
-  .glass-advanced {
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.1) 0%,
-      rgba(255, 255, 255, 0.05) 100%
-    );
-    backdrop-filter: blur(24px) saturate(200%);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  }
-  
-  /* Diamond Gradient Effects */
-  .diamond-gradient {
-    background: linear-gradient(
-      135deg,
-      hsl(141, 81%, 40%) 0%,
-      hsl(180, 81%, 40%) 25%,
-      hsl(220, 81%, 40%) 50%,
-      hsl(260, 81%, 40%) 75%,
-      hsl(141, 81%, 40%) 100%
-    );
-    background-size: 200% 200%;
-    animation: shimmer 3s ease-in-out infinite;
-  }
-  
-  /* Message bubbles with advanced glass */
-  .message-bubble {
-    @apply glass-advanced rounded-2xl shadow-lg backdrop-blur-glass;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .message-bubble::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.1),
-      transparent
-    );
-    transition: left 0.5s;
-  }
-  
-  .message-bubble:hover::before {
-    left: 100%;
-  }
-  
-  /* Floating animation for decorative elements */
-  .float-animation {
-    animation: float 6s ease-in-out infinite;
-  }
+* {
+  border-color: hsl(var(--border));
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: "Inter", system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Glass effects */
+.glass-light {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-medium {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.glass-heavy {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-advanced {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Gradient effects */
+.gradient-primary {
+  background: linear-gradient(135deg, 
+    hsl(var(--primary)) 0%, 
+    hsl(142 71% 35%) 50%, 
+    hsl(var(--primary)) 100%
+  );
+}
+
+.gradient-rainbow {
+  background: linear-gradient(135deg, 
+    #10b981 0%, 
+    #06b6d4 25%, 
+    #3b82f6 50%, 
+    #8b5cf6 75%, 
+    #10b981 100%
+  );
+  background-size: 200% 200%;
+  animation: rainbow-flow 4s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes rainbow-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Message bubble hover effect */
+.message-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.message-hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.message-hover:hover::before {
+  left: 100%;
 }
