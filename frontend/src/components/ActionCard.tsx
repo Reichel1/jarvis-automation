@@ -1,5 +1,5 @@
 import React from 'react';
-import { Action } from '../types';
+import type { Action } from '../types';
 import { CheckCircle, XCircle, Loader2, Clock } from 'lucide-react';
 
 interface ActionCardProps {

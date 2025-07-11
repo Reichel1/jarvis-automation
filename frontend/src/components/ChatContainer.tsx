@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ChatMessage } from './ChatMessage';
 import { ChatInput } from './ChatInput';
-import { Message, Action } from '../types';
+import type { Message, Action } from '../types';
 
 export const ChatContainer: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
