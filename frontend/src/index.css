@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import '@fontsource/manrope/variable.css';
-
 body {
   @apply font-sans bg-background text-white;
   min-height: 100vh;
