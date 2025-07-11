@@ -1,68 +1,145 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
+@layer base {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    --background: 240 15% 4%;
+    --foreground: 0 0% 95%;
+    --card: 240 15% 8%;
+    --card-foreground: 0 0% 95%;
+    --popover: 240 15% 8%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 141 81% 40%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 15% 12%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 240 15% 12%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 240 15% 16%;
+    --accent-foreground: 0 0% 95%;
+    --destructive: 0 62% 52%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 15% 20%;
+    --input: 240 15% 16%;
+    --ring: 141 81% 40%;
+    --radius: 1rem;
   }
-  a:hover {
-    color: #747bff;
+
+  .dark {
+    --background: 240 15% 4%;
+    --foreground: 0 0% 95%;
+    --card: 240 15% 8%;
+    --card-foreground: 0 0% 95%;
+    --popover: 240 15% 8%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 141 81% 40%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 15% 12%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 240 15% 12%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 240 15% 16%;
+    --accent-foreground: 0 0% 95%;
+    --destructive: 0 62% 52%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 15% 20%;
+    --input: 240 15% 16%;
+    --ring: 141 81% 40%;
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: 'Urbanist', system-ui, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Glass Morphism Effects */
+  .glass-light {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+  
+  .glass-medium {
+    @apply bg-white/10 backdrop-blur-glass border border-white/20;
+  }
+  
+  .glass-heavy {
+    @apply bg-white/15 backdrop-blur-glass-heavy border border-white/30;
+  }
+  
+  .glass-advanced {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+    backdrop-filter: blur(24px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Diamond Gradient Effects */
+  .diamond-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(141, 81%, 40%) 0%,
+      hsl(180, 81%, 40%) 25%,
+      hsl(220, 81%, 40%) 50%,
+      hsl(260, 81%, 40%) 75%,
+      hsl(141, 81%, 40%) 100%
+    );
+    background-size: 200% 200%;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+  
+  /* Message bubbles with advanced glass */
+  .message-bubble {
+    @apply glass-advanced rounded-2xl shadow-lg backdrop-blur-glass;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .message-bubble::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transition: left 0.5s;
+  }
+  
+  .message-bubble:hover::before {
+    left: 100%;
+  }
+  
+  /* Floating animation for decorative elements */
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
 }

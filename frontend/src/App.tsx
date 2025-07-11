@@ -1,9 +1,23 @@
 import Chat from './Chat';
+import { useEffect } from 'react';
 
 function App() {
+  useEffect(() => {
+    // Add dark class to html element for proper theme support
+    document.documentElement.classList.add('dark');
+  }, []);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#18181c] via-[#23232a] to-[#101014]">
-      <div className="w-full max-w-2xl h-[90vh] rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background/80 to-background/60 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full diamond-gradient opacity-20 blur-3xl float-animation" />
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-green-primary/20 opacity-20 blur-3xl float-animation" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-blue-500/10 opacity-30 blur-2xl float-animation" style={{ animationDelay: '4s' }} />
+      </div>
+      
+      {/* Main chat container */}
+      <div className="relative w-full max-w-4xl h-[90vh] mx-4">
         <Chat />
       </div>
     </div>
