@@ -96,7 +96,7 @@ export const ChatContainer: React.FC = () => {
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-8 space-y-6 glass-dark">
+      <div className="flex-1 overflow-y-auto px-5 py-6 space-y-4">
         {messages.map((message) => (
           <ChatMessage key={message.id} message={message} />
         ))}
