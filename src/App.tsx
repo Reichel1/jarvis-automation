@@ -1,14 +1,28 @@
-import React from 'react';
-import Chat from './Chat';
+import React from "react";
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Index from "./pages/Index";
+import NotFound from "./pages/NotFound";
 
-function App() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#18181c] via-[#23232a] to-[#101014]">
-      <div className="w-full max-w-2xl h-[90vh] rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col overflow-hidden">
-        <Chat />
-      </div>
-    </div>
-  );
-}
+const queryClient = new QueryClient();
 
-export default App; 
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
+);
+
+export default App;
